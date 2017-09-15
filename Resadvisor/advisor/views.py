@@ -7,4 +7,7 @@ from django.shortcuts import render
 
 
 def main(request):
-    return render(request, 'advisor/main.html', {})
+    return render(request, 'advisor/main.html')
+
+def register(request):
+    return render(request, 'advisor/register.html')

@@ -1,4 +1,4 @@
-#Restaurant Advisor
+# Restaurant Advisor
 
 Un sistema que se encargue de almacenar información sobre lugares de comida , que mediante un algoritmo tome en cuenta la puntuación de la gente sobre estos lugares y prensente una calificación, que se muestre también comentarios de la gente, y si llegamos a eso incluir un mapa de google maps con la dirección y una busqueda con localización con respecto al usuario.
 ##Funciones:
@@ -10,7 +10,7 @@ Un sistema que se encargue de almacenar información sobre lugares de comida , q
     -Buscador de lugares por nombre.
     -Registro de la cantidad de calificaiones por usuario
 
-##Tecnologias:
+## Tecnologias:
 
     -Django (framework).
     -Mysql (database).

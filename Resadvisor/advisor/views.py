@@ -14,3 +14,6 @@ def register(request):
 
 def login(request):
     return render(request, 'advisor/register.html')
+
+def maps(request):
+    return render(request, 'advisor/maps.html')

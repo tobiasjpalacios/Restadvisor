@@ -24,6 +24,19 @@ class Comentarios(models.Model):
             
     def __str__(self):
             return self.text 
+
+class Puntaje(models.Model):
+    puntajetotal=models.BigIntegerField()
+    perfil_puntuado=models.ForeignKey('Perfil',on_delete=models.CASCADE)
+    
         
+class Perfil(models.Model):
+    categoria=models.CharField(max_length=100)
+    
 
-
+class Likes(models.Model):
+    cant_likes =models.BigIntegerField()
+    like_target= models.ForeignKey('Restaurante',on_delete=models.CASCADE,)
+    like_owner= models.ForeignKey('Perfil',on_delete=models.CASCADE,)
+    
+    

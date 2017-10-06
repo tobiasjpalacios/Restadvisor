@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'register/', register, name="register"),
     url(r'login/', login, name="login"),
     url(r'maps/', maps, name="maps"),
+    url(r'^upload$', upload, name="upload"),
     ]

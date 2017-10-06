@@ -6,7 +6,8 @@ from django.utils import timezone
 # Create your models here.
 class Restaurante(models.Model):
     title = models.CharField(max_length=200)
-    Nombre = models.TextField()
+    name = models.CharField(max_length=140, default='DEFAULT VALUE')
+    descripcion = models.TextField()
     direcc = models.TextField()
     
 class Comentarios(models.Model):

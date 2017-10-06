@@ -1,7 +1,7 @@
     <html>
     <head>
         {% load static %}
- <!-- Compiled and minified CSS -->
+ <!-- Compiled and minified CSS --> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
@@ -25,6 +25,14 @@
       </ul>
     </div>
   </nav>    
+        <form action="{% url 'upload' %}" method="POST">
+		{% csrf_token %}
+		<input type="text" name="titl">
+		<input type="text" name="nombr">
+		<input type="text" name="descr"> 
+        <input type="text"name="direcci">    
+		<input type="submit">
+	</form>
         <div class="parallax-container">
       <img class="parallax" src="http://www.personalchefbyronbay.com.au/wp-content/uploads/2015/09/home-table3-parallax.jpg">
    <div class="row">

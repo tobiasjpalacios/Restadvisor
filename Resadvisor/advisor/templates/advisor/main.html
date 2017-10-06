@@ -1,12 +1,19 @@
     <html>
     <head>
         {% load static %}
+<<<<<<< HEAD
  <!-- Compiled and minified CSS --> 
+=======
+>>>>>>> ba6b7f32393ef0fed3648f309230f9320acb5b2c
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <script>$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });</script>
   <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-        
+      
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
@@ -19,8 +26,24 @@
       <a href="#!" class="brand-logo">ResAdvisor</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/login">Login</a></li>
-        <li><a href="7maps">Map</a></li>
+          <!-- Modal Trigger -->
+        <li><a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</a></li>
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content black-text">
+              <h4>Login</h4>
+              <p>Logueese para usar las funciones del programa</p>
+              <input id="Usuario" placeholder="Usuario" type="text" class="validate black-text">
+              <input id="Contraseña" placeholder="Contraseña" type="password" class="validate black-text">
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Login</a>
+              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+
+            </div>
+          </div>   
+        <li><a href="{% url 'maps' %}">Map</a></li>
         <li><a href="collapsible.html">About Us</a></li>
       </ul>
     </div>
@@ -49,35 +72,8 @@
         </div>
       </div>
         </div>
-
-        <div class = card>
-            <div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input  id="first_name" type="text" class="validate">
-          <label for="first_name">User</label>
-        </div>
-        </div>
-        
-    
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
     </form>
   </div>
 </div>    
-
-        <!--Import jQuery before materialize.js-->
-
-    <script> $(".button-collapse").sideNav();</script>
-        <script> 
-            $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-        </script>
-      </body>
+</body>
 </html>

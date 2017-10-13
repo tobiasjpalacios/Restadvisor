@@ -9,7 +9,9 @@ class Restaurante(models.Model):
     name = models.CharField(max_length=140, default='DEFAULT VALUE')
     descripcion = models.TextField()
     direcc = models.TextField()
-    
+    published_date = models.DateTimeField(blank=True, null=True)
+    created_date = models.DateTimeField(default=timezone.now)
+
 class Comentarios(models.Model):
     autor = models.ForeignKey('auth.user')
     text  = models.TextField()

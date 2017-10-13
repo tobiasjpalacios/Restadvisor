@@ -1,10 +1,10 @@
     <html>
     <head>
         {% load static %}
-<<<<<<< HEAD
+
  <!-- Compiled and minified CSS --> 
-=======
->>>>>>> ba6b7f32393ef0fed3648f309230f9320acb5b2c
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
@@ -47,7 +47,10 @@
         <li><a href="collapsible.html">About Us</a></li>
       </ul>
     </div>
-  </nav>    
+ 
+        </nav>    
+  
+        <!------para cargar los Restaraurantes------------>
         <form action="{% url 'upload' %}" method="POST">
 		{% csrf_token %}
 		<input type="text" name="titl">
@@ -56,6 +59,8 @@
         <input type="text"name="direcci">    
 		<input type="submit">
 	</form>
+       <!--------------------->
+        
         <div class="parallax-container">
       <img class="parallax" src="http://www.personalchefbyronbay.com.au/wp-content/uploads/2015/09/home-table3-parallax.jpg">
    <div class="row">
@@ -72,8 +77,31 @@
         </div>
       </div>
         </div>
+        <form>
     </form>
+  <div>
+{% for Restaurante in restaurantes %}
+  <div class="col s12 m7">
+    <h2 class="header">{{ Restaurante.name }}</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>{{ Restaurante.descripcion |linebreaksbr }}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>    
+        {% endfor %}      
+      
+      
+      
+        
+        </div>    
 </body>
 </html>

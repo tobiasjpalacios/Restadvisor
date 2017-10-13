@@ -9,7 +9,8 @@ from .models import *
 
 
 def main(request):
-    return render(request, 'advisor/main.html')
+    restaurantes = Restaurante.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'advisor/main.html',{'restaurantes': restaurantes})
 
 def register(request):
     return render(request, 'advisor/register.html')

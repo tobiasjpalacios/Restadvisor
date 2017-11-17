@@ -52,22 +52,22 @@
                         <li>
                             <a href="#load-event"><img src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/System%20and%20Internet/JAVA.png"
                                     width="90" height="62.7"></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}"><img src="https://cdn1.iconfinder.com/data/icons/materia-arrows-symbols-vol-8/24/018_320_door_exit_logout-128.png"
+                    </li>
+                    <li>
+                        <a href="{% url 'logout' %}"><img src="https://cdn1.iconfinder.com/data/icons/materia-arrows-symbols-vol-8/24/018_320_door_exit_logout-128.png"
                                         width="90" height="62.7"></a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="#load-login">
-                                <font color="black"><i class=" center-align medium material-icons input">LOG IN</a></i></font>
-                                <div class="alert alert-warning">
-                                    <strong>Warning!</strong> error
-                                </div>
-                                <li>
-                                    {% endif %}
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="#load-login">
+                            <font color="black"><i class=" center-align medium material-icons input">LOG IN</a></i></font>
+                            <div class="alert alert-warning">
+                                <strong>Warning!</strong> error
+                            </div>
+                            <li>
+                                {% endif %}
 
-                                </li>
+                            </li>
 
 
                 </ul>
@@ -97,14 +97,14 @@
                 </div>
             </div>
             <center>
-                <input class="modal-action modal-close btn-flat" value="Submit" type="submit" placeholder="Esto és un placeholder"> 
+                <input class="modal-action modal-close btn-flat" value="Submit" type="submit" placeholder="Esto és un placeholder">
             </center>
             <div class="modal-footer blue-grey darken-2">
                 <a class="btn red" onclick="change_modal('load-login','load-register')">REGISTER</a>
             </div>
         </form>
-        </div>
-            
+    </div>
+
 
 
 
@@ -118,18 +118,47 @@
 
 
 
-    <!------para cargar los Restaraurantes------------>
-    <div id="load-event" class="modal blue-grey darken-1>
-        <form action="{% url 'upload' %}" method="POST">
-        {% csrf_token %}
-        <input type="text" name="titl">
-        <input type="text" name="nombr">
-        <input type="text" name="descr">
-        <input type="text" name="direcci">
 
-        <input type="submit">
-    </form>
+    <!------para cargar los Restaraurantes------------>
+
+    <div>
+        <div id="load-event" class="modal blue-grey darken-1z">
+            <form action="{% url 'upload' %}" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col s12">
+                        <input id="titulo" type="text" name="titl">
+                        <label for="titulo">nombre clave restaurante</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                    <input id="nombre" type="text" name="nombr">
+                     <label for="nombre">Nombre Restaurantes</label>
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                    <input type="text" name="descr">
+               </div>
+                    </div>
+                <div class="row">
+                    <div class="col s12">
+                    <input type="text" name="direcci">
+               </div>
+                    </div>
+                   
+                <div class="row">
+                    <div>
+                    <input type="submit">
+                </div>
+                    </div>
+            </form>
         </div>
+    </div>
+
+
     <!--------------------->
 
     <div class="parallax-container">

@@ -9,7 +9,6 @@ class Restaurante(models.Model):
     name = models.CharField(max_length=140, default='DEFAULT VALUE')
     descripcion = models.TextField()
     direcc = models.TextField()
-    published_date = models.DateTimeField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
 class Comentarios(models.Model):
@@ -17,12 +16,9 @@ class Comentarios(models.Model):
     text  = models.TextField()
     rest_comen = models.ForeignKey('Restaurante',on_delete=models.CASCADE,)
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
 
     
-    def publish(self):
-            self.published_date = timezone.now()
-            self.save()
+    
 
             
     def __str__(self):

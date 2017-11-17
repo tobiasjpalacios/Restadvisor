@@ -1,107 +1,184 @@
-    <html>
-    <head>
-        {% load static %}
+<html>
 
- <!-- Compiled and minified CSS --> 
+<head>
+    {% load static %}
+
+    <!-- Compiled and minified CSS -->
 
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
-    <script>$(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });</script>
-  <!-- Compiled and minified JavaScript -->
-      
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+        });
 
-    <body>
-       
+    </script>
+    <!-- Compiled and minified JavaScript -->
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+    <!--------------navbar------------------>
+    <div class="navbar-fixed">
+
+
         <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">ResAdvisor</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">Menu</i></a>
-      <ul class="right hide-on-med-and-down">
-          <!-- Modal Trigger -->
-        <li><a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Login</a></li>
+            <div class="nav-wrapper grey darken-2">
+                <a href="{% url 'main' %}" class="brand-logo">
+                    <h3>RestAdvisor</h3>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#load-login">
+                                {% if user.is_authenticated %}
+                                <font color="black"><i class="medium material-icons">  {{ user|upper }}</i>
+                        </font>
+                        <li>
+                            <a href="#load-event"><img src="https://cdn4.iconfinder.com/data/icons/devine_icons/Black/PNG/System%20and%20Internet/JAVA.png"
+                                    width="90" height="62.7"></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}"><img src="https://cdn1.iconfinder.com/data/icons/materia-arrows-symbols-vol-8/24/018_320_door_exit_logout-128.png"
+                                        width="90" height="62.7"></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="#load-login">
+                                <font color="black"><i class=" center-align medium material-icons input">LOG IN</a></i></font>
+                                <div class="alert alert-warning">
+                                    <strong>Warning!</strong> error
+                                </div>
+                                <li>
+                                    {% endif %}
 
-          <!-- Modal Structure -->
-          <div id="modal1" class="modal">
-            <div class="modal-content black-text">
-              <h4>Login</h4>
-              <p>Logueese para usar las funciones del programa</p>
-              <input id="Usuario" placeholder="Usuario" type="text" class="validate black-text">
-              <input id="Contraseña" placeholder="Contraseña" type="password" class="validate black-text">
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Login</a>
-              <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                </li>
 
+
+                </ul>
             </div>
-          </div>   
-        <li><a href="{% url 'maps' %}">Map</a></li>
-        <li><a href="collapsible.html">About Us</a></li>
-      </ul>
+        </nav>
+
     </div>
- 
-        </nav>    
-  
-        <!------para cargar los Restaraurantes------------>
+
+    <div id="load-login" class="modal blue-grey darken-1">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-content">
+                <h4>LogIn</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="username" id="username" type="text" class="validate">
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="password" id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <center>
+                <input class="modal-action modal-close btn-flat" value="Submit" type="submit" placeholder="Esto és un placeholder"> 
+            </center>
+            <div class="modal-footer blue-grey darken-2">
+                <a class="btn red" onclick="change_modal('load-login','load-register')">REGISTER</a>
+            </div>
+        </form>
+        </div>
+            
+
+
+
+    <!--------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+    <!------para cargar los Restaraurantes------------>
+    <div id="load-event" class="modal blue-grey darken-1>
         <form action="{% url 'upload' %}" method="POST">
-		{% csrf_token %}
-		<input type="text" name="titl">
-		<input type="text" name="nombr">
-		<input type="text" name="descr"> 
-        <input type="text"name="direcci">    
-		<input type="submit">
-	</form>
-       <!--------------------->
-        
-        <div class="parallax-container">
-      <img class="parallax" src="http://www.personalchefbyronbay.com.au/wp-content/uploads/2015/09/home-table3-parallax.jpg">
-   <div class="row">
-        <div class="col s12 ">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Registro Necesario</span>
-              <p>Registrate en la pagina para acceder a una base de datos de todos los restaurantes de Córdoba</p>
-            </div>
-            <div class="card-action">
-              <a href="{% url 'register' %}">Register</a>
-            </div>
-          </div>
-        </div>
-      </div>
-        </div>
-        <form>
+        {% csrf_token %}
+        <input type="text" name="titl">
+        <input type="text" name="nombr">
+        <input type="text" name="descr">
+        <input type="text" name="direcci">
+
+        <input type="submit">
     </form>
-  <div>
-{% for Restaurante in restaurantes %}
-  <div class="col s12 m7">
-    <h2 class="header">{{ Restaurante.name }}</h2>
-    <div class="card horizontal">
-      <div class="card-image">
-        
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p>{{ Restaurante.descripcion |linebreaksbr }}</p>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
+    <!--------------------->
+
+    <div class="parallax-container">
+        <img class="parallax" src="http://www.personalchefbyronbay.com.au/wp-content/uploads/2015/09/home-table3-parallax.jpg">
+        <div class="row">
+            <div class="col s6 ">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Registro Necesario</span>
+                        <p>Registrate en la pagina para acceder a una base de datos de todos los restaurantes de Córdoba</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'register' %}">Register</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-        {% endfor %}      
-      
-      
-      
-        
-        </div>    
+    <div class="row ">
+        {% for Restaurante in restaurantes %}
+        <div class=" card col s5  blue-grey darken-1 ">
+            <h2 class="header">{{ Restaurante.name }}</h2>
+            <div class="card ">
+                <div class="">
+                    <div class="card-content">
+                        <p>{{ Restaurante.descripcion |linebreaksbr }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#"> Direccion en {{Restaurante.direcc}}</a>
+                        <p>publicado en : {{ Restaurante.created_date }}</p>
+                    </div>
+                    <div> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    <div class="s2"></div>
+
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>

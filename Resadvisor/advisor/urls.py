@@ -6,7 +6,8 @@ from .views import *
 urlpatterns = [
     url(r'^$', main, name="main"),
     url(r'register/', register, name="register"),
-    url(r'login/', login, name="login"),
     url(r'maps/', maps, name="maps"),
     url(r'^upload$', upload, name="upload"),
-    ]
+    url(r'^login/', my_login, name="login"),
+    url(r'^logout/', my_logout, name="logout"),
+]

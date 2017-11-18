@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^upload$', upload, name="upload"),
     url(r'^login/', my_login, name="login"),
     url(r'^logout/', my_logout, name="logout"),
+    url(r'^signup/$', signup, name='signup'),
+    url(r'^comentar/',new_comentario, name="comentar"),
 ]

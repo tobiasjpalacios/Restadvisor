@@ -10,7 +10,9 @@ class Restaurante(models.Model):
     descripcion = models.TextField()
     direcc = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-
+    my_comentario= models.ForeignKey('Comentarios',on_delete=models.CASCADE,)
+    
+    
 class Comentarios(models.Model):
     autor = models.ForeignKey('auth.user')
     text  = models.TextField()

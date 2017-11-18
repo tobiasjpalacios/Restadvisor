@@ -17,6 +17,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib import auth
+from .forms import SignUpForm
 # Create your views here.
 
 
@@ -34,12 +35,19 @@ def maps(request):
     return render(request, 'advisor/maps.html')
 
 def upload(request):
-    titl = request.POST.get("titl")
+    title = request.POST.get("titl")
     name = request.POST.get("nombr")
     descripcion = request.POST.get("descr")
     direcc = request.POST.get("direcci")
-    new = Restaurante(title=titl, name=name , descripcion=descripcion, direcc=direcc)
+    new = Restaurante(titl=titl, name=name , descripcion=descripcion, direcc=direcc)
     new.save()
+    return redirect(main)
+    
+    
+def new_comentario(request):
+    texto=request.post.get("textocomentario")
+    new_comentario =Comentarios(texto=texto)
+    new_comentario.save()
     return redirect(main)
     
 def my_logout(request):
@@ -55,3 +63,18 @@ def my_login(request):
         return redirect('main') 
     else:
         print redirect('main')
+        
+        
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('main')
+    else:
+        form = SignUpForm()
+    return render(request, 'main.html', {'form': form})
